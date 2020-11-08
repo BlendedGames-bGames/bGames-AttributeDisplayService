@@ -24,7 +24,6 @@ router.get('/getPlayerConfig/:id', (req,res,next)=>{
     const{id}= req.params;
     var options = {
         host : 'bgames-configurationservice.herokuapp.com',
-        port : 31705,
         path: ('/players/'+id),
         method: 'GET'
       };
@@ -64,7 +63,6 @@ router.put('/PlayerConfig/edit/:id', (req,res,next)=>{
         
         var options = {
             host : 'bgames-configurationservice.herokuapp.com',
-            port : 31705,
             path: ('/players/'+id),
             method: 'PUT',
             headers: {
