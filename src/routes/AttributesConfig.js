@@ -22,8 +22,7 @@ router.get('/getAttributes/:id', (req,res,next)=>{
     var post_data = req.body;
     const{id}= req.params;
     var options = {
-        host : 'localhost',
-        port : 3001,
+        host : 'apirestgetservice.herokuapp.com',
         path: ('/attributes/'+id),
         method: 'GET'
     };
@@ -45,8 +44,7 @@ router.get('/getAttributes/bycategory/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
     var options = {
-        host : 'localhost',
-        port : 3001,
+        host : 'apirestgetservice.herokuapp.com',
         path: ('/attributes/bycategory/'+id+'/'+type),
         method: 'GET'
     };
@@ -69,8 +67,7 @@ router.get('/getAttributes/byname/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
     var options = {
-        host : 'localhost',
-        port : 3001,
+        host : 'apirestgetservice.herokuapp.com',
         path: ('/attributes/byname/'+id+'/'+type),
         method: 'GET'
     };
@@ -95,8 +92,7 @@ router.get('/getAttributesSummary/:id', (req,res,next)=>{
     const id= req.params.id;  
     console.log(id)
     var options = {
-        host : 'localhost',
-        port : 3001,
+        host : 'apirestgetservice.herokuapp.com',
         path: ('/attributes/resume/'+id),
         method: 'GET'
     };
@@ -117,8 +113,7 @@ router.get('/getAttributesSummary/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
     var options = {
-        host : 'localhost',
-        port : 3001,
+        host : 'apirestgetservice.herokuapp.com',
         path: ('/attributes/resume/'+id+'/'+type),
         method: 'GET'
     };
