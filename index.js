@@ -16,6 +16,6 @@ app.use(require('./routes/AttributesConfig'))
 app.use(require('./routes/PlayerConfig'))
 
 //Starting the server
-app.listen(port) => {
+app.listen(port, () => {
  console.log(`listening on port ${port} ...... `);
 });

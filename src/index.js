@@ -6,7 +6,7 @@ app.use(bodyParse.urlencoded({extended:true}));
 
 
 //Settings
-app.set('port',process.env.PORT || 3000);
+const port = process.env.PORT || 3030;
 
 //Middlewares
 app.use(express.json());
@@ -16,6 +16,6 @@ app.use(require('./routes/AttributesConfig'))
 app.use(require('./routes/PlayerConfig'))
 
 //Starting the server
-app.listen(3030, () => {
- console.log("El servidor está inicializado en el puerto 3030");
+app.listen(port, () => {
+ console.log(`listening on port ${port} ...... `);
 });
