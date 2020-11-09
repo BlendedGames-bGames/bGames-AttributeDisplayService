@@ -6,18 +6,10 @@ var http = require('http');
 var common = require('./extras');
 
 
-
-// PARA ESTE MICROSERVICIO SE NECESITA INGRESAR LOS DATOS DE LA SIGUIENTE MANERA:
-/* Ejemplo de Json del Body para el POST
-    {
-    "id_player": 2,
-    "nameat": "Resistencia",
-    "namecategory": "Físico",
-    "data": 1,
-    "data_type": "in.off",
-    "input_source": "xlr8_podometer",
-    "date_time": "2019-05-16 13:17:17"
-    }
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Name, password and age of that player
+Description: Calls the b-Games-Configurationservice service to get the player's information
 */
 router.get('/getPlayerConfig/:id', (req,res,next)=>{
     var post_data = req.body;
@@ -39,6 +31,12 @@ router.get('/getPlayerConfig/:id', (req,res,next)=>{
     });
 
 })
+
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Void (Modifies the name, pass and age of a player)
+Description: Calls the b-Games-Configurationservice service to edit the player's information
+*/
 //Faltan todos los verificadores de si cumple con los requerimientos o faltan datos!
 router.put('/PlayerConfig/edit/:id', (req,res,next)=>{
     //var headersIN = req.body;

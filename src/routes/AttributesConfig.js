@@ -18,6 +18,12 @@ var common = require('./extras');
     "date_time": "2019-05-16 13:17:17"
     }
 */
+
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Subattributes of that player
+Description: Calls the b-Games-APIrestGETService service to get the attributes
+*/
 router.get('/getAttributes/:id', (req,res,next)=>{
     var post_data = req.body;
     const{id}= req.params;
@@ -40,6 +46,11 @@ router.get('/getAttributes/:id', (req,res,next)=>{
 
 })
 
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Subattributes of that player in a specific attribute using its type as identifier
+Description: Calls the b-Games-APIrestGETService service to get the subattributes
+*/
 router.get('/getAttributes/bycategory/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
@@ -62,7 +73,11 @@ router.get('/getAttributes/bycategory/:id/:type', (req,res,next)=>{
 
 })
 
-
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Subattributes of that player in a specific attribute using its name as identifier
+Description: Calls the b-Games-APIrestGETService service to get the subattributes
+*/
 router.get('/getAttributes/byname/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
@@ -85,7 +100,11 @@ router.get('/getAttributes/byname/:id/:type', (req,res,next)=>{
 
 })
 
-
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Resume of attributes of that player
+Description: Calls the b-Games-APIrestGETService service to get the resume of the attributes
+*/
 router.get('/getAttributesSummary/:id', (req,res,next)=>{
     var post_data = req.body;
     console.log('paso por aqui')
@@ -109,6 +128,11 @@ router.get('/getAttributesSummary/:id', (req,res,next)=>{
     
 })
 
+/*
+Input: Id of a player (range 0 to positive int)
+Output: Specific resume of a single attribute of that player
+Description: Calls the b-Games-APIrestGETService service to get the resume of the attributes
+*/
 router.get('/getAttributesSummary/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
