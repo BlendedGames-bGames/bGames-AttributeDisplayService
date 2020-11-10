@@ -38,7 +38,7 @@ Output: Void (Modifies the name, pass and age of a player)
 Description: Calls the b-Games-Configurationservice service to edit the player's information
 */
 //Faltan todos los verificadores de si cumple con los requerimientos o faltan datos!
-router.put('/PlayerConfig/edit/:id', (req,res,next)=>{
+router.put('/getPlayerConfig/edit/:id', (req,res,next)=>{
     //var headersIN = req.body;
     const headersIN = JSON.stringify(req.body);
 
