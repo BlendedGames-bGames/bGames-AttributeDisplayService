@@ -3,6 +3,7 @@ const router = express.Router();
 
 var http = require('http');
 
+const fetch = require('node-fetch');
 var common = require('./extras');
 
 
@@ -153,6 +154,50 @@ router.get('/getAttributesSummary/:id/:type', (req,res,next)=>{
     });
     
 })
+
+/*
+Input: Id of a player (range 0 to positive int) and type of attribute
+Output: Modifies that Attribute of that player
+Description: Doble MYSQL query
+*/
+router.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
+    var {id_player,namecategory,data} = req.body;
+    const{id,type}= req.params;
+    var options = {
+        host : 'localhost',
+        port: '3002',
+        //host : 'bgames-apirestpostatt.herokuapp.com',
+        path: ('/attributes/bycategory/'+id+'/'+type)
+    }; 
+    var url = "http://"+options.host + ":"+options.port + options.path;
+    console.log("URL "+url);
+    const MEDIUM_POST_URL = url;
+    const response = fetch(MEDIUM_POST_URL, {
+        method: "put",
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+            "Accept-Charset": "utf-8"
+            },
+            body: JSON.stringify({
+                id_player: id_player,
+                namecategory:namecategory,
+                data:data
+            })
+    })
+    .then(res => res.text())
+    .then(data => console.log("Response of API: "+data));
+    const messageData = response;
+
+    // the API frequently returns 201
+    if ((response.status !== 200) && (response.status !== 201)) {
+        console.error(`Invalid response status ${ response.status }.`);
+        throw messageData;
+    }
+
+})
+
+
 
 module.exports = router;
 
