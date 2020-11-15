@@ -164,13 +164,22 @@ router.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
     var {id_player,namecategory,data} = req.body;
     const{id,type}= req.params;
     var options = {
-        host : 'localhost',
-        port: '3002',
-        //host : 'bgames-apirestpostatt.herokuapp.com',
+        /*host : 'localhost',
+        port: '3002',*/
+        host : 'bgames-apirestpostatt.herokuapp.com',
         path: ('/attributes/bycategory/'+id+'/'+type)
     }; 
     var url = "http://"+options.host + ":"+options.port + options.path;
     console.log("URL "+url);
+    console.log(req.body)
+    console.log(id_player,namecategory,data)
+    keys = Object.keys(req.body)
+    console.log(keys[0])
+    sbody = keys[0].replace('\u00006','')
+    console.log(sbody)
+    sbody2 = JSON.parse(sbody)
+    console.log(sbody2)
+
     const MEDIUM_POST_URL = url;
     const response = fetch(MEDIUM_POST_URL, {
         method: "put",
@@ -180,9 +189,9 @@ router.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
             "Accept-Charset": "utf-8"
             },
             body: JSON.stringify({
-                id_player: id_player,
-                namecategory:namecategory,
-                data:data
+                id_player: sbody2.id_player,
+                namecategory:sbody2.namecategory,
+                data:sbody2.data
             })
     })
     .then(res => res.text())
