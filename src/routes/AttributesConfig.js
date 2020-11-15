@@ -169,15 +169,15 @@ router.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
         host : 'bgames-apirestpostatt.herokuapp.com',
         path: ('/attributes/bycategory/'+id+'/'+type)
     }; 
-    var url = "http://"+options.host + ":"+options.port + options.path;
+    var url = "http://"+options.host + options.path;
     console.log("URL "+url);
     console.log(req.body)
     console.log(id_player,namecategory,data)
-    keys = Object.keys(req.body)
+    var keys = Object.keys(req.body)
     console.log(keys[0])
-    sbody = keys[0].replace('\u00006','')
+    var sbody = keys[0].replace('\u00006','')
     console.log(sbody)
-    sbody2 = JSON.parse(sbody)
+    var sbody2 = JSON.parse(sbody)
     console.log(sbody2)
 
     const MEDIUM_POST_URL = url;
