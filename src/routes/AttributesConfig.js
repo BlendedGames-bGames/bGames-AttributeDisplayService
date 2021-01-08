@@ -112,8 +112,8 @@ router.get('/getAttributesSummary/:id', (req,res,next)=>{
     const id= req.params.id;  
     console.log(id)
     var options = {
-        host : 'apirestgetservice.herokuapp.com',
-        path: ('/attributes/resume/'+id),
+        host : 'bgames-apirestget.herokuapp.com',
+        path: ('/player_all_attributes/'+id),
         method: 'GET'
     };
     common.getJson(options,function(error,result){
