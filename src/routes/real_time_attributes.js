@@ -1,15 +1,12 @@
 const express = require('express');
-const router = express.Router();
+const real_time_attributes = express.Router();
 
-var http = require('http');
-
-const fetch = require('node-fetch');
-var common = require('./extras');
+import { testEnvironmentVariable } from '../settings';
 
 
-router.get("/", (req,res) =>{
-    var variable = req.body
-    res.status(200).json(variable)
+real_time_attributes.get("/", (req,res) =>{
+    res.status(200).json({ message: testEnvironmentVariable})
+
 
 });
 
@@ -31,7 +28,7 @@ Input: Id of a player (range 0 to positive int)
 Output: Subattributes of that player
 Description: Calls the b-Games-APIrestGETService service to get the attributes
 */
-router.get('/getAttributes/:id', (req,res,next)=>{
+real_time_attributes.get('/getAttributes/:id', (req,res,next)=>{
     var post_data = req.body;
     const{id}= req.params;
     var options = {
@@ -58,7 +55,7 @@ Input: Id of a player (range 0 to positive int)
 Output: Subattributes of that player in a specific attribute using its type as identifier
 Description: Calls the b-Games-APIrestGETService service to get the subattributes
 */
-router.get('/getAttributes/bycategory/:id/:type', (req,res,next)=>{
+real_time_attributes.get('/getAttributes/bycategory/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
     var options = {
@@ -85,7 +82,7 @@ Input: Id of a player (range 0 to positive int)
 Output: Subattributes of that player in a specific attribute using its name as identifier
 Description: Calls the b-Games-APIrestGETService service to get the subattributes
 */
-router.get('/getAttributes/byname/:id/:type', (req,res,next)=>{
+real_time_attributes.get('/getAttributes/byname/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
     var options = {
@@ -112,7 +109,7 @@ Input: Id of a player (range 0 to positive int)
 Output: Resume of attributes of that player
 Description: Calls the b-Games-APIrestGETService service to get the resume of the attributes
 */
-router.get('/getAttributesSummary/:id', (req,res,next)=>{
+real_time_attributes.get('/getAttributesSummary/:id', (req,res,next)=>{
     var post_data = req.body;
     console.log('paso por aqui')
     const id= req.params.id;  
@@ -140,7 +137,7 @@ Input: Id of a player (range 0 to positive int)
 Output: Specific resume of a single attribute of that player
 Description: Calls the b-Games-APIrestGETService service to get the resume of the attributes
 */
-router.get('/getAttributesSummary/:id/:type', (req,res,next)=>{
+real_time_attributes.get('/getAttributesSummary/:id/:type', (req,res,next)=>{
     var post_data = req.body;
     const{id,type}= req.params;
     var options = {
@@ -166,7 +163,7 @@ Input: Id of a player (range 0 to positive int) and type of attribute
 Output: Modifies that Attribute of that player
 Description: Doble MYSQL query
 */
-router.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
+real_time_attributes.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
     var {id_player,namecategory,data} = req.body;
     const{id,type}= req.params;
     var options = {
@@ -214,5 +211,5 @@ router.put('/putAttributes/bycategory/:id/:type', (req,res,next)=>{
 
 
 
-module.exports = router;
+export default real_time_attributes;
 
